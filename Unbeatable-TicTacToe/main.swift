@@ -9,14 +9,10 @@
 import Foundation
 
 var board = Board()
+var gameType = GameType.humanVersusHuman
 
 var player1 = Player()
 var player2 = Player()
-
-board = Board.makeMove(board: board, space: "2", withSymbol: "X")
-board = Board.makeMove(board: board, space: "7", withSymbol: "X")
-board = Board.makeMove(board: board, space: "9", withSymbol: "O")
-print(board.outputBoard())
 
 
 

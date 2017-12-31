@@ -10,6 +10,7 @@
 		30AEC2491FF6F4BE0031A233 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AEC2481FF6F4BE0031A233 /* main.swift */; };
 		30AEC2501FF6FAEE0031A233 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AEC24F1FF6FAEE0031A233 /* Board.swift */; };
 		30AEC2521FF7345D0031A233 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AEC2511FF7345D0031A233 /* Player.swift */; };
+		30AEC2541FF887910031A233 /* GameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AEC2531FF887910031A233 /* GameType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +30,7 @@
 		30AEC2481FF6F4BE0031A233 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		30AEC24F1FF6FAEE0031A233 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		30AEC2511FF7345D0031A233 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		30AEC2531FF887910031A233 /* GameType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				30AEC2481FF6F4BE0031A233 /* main.swift */,
 				30AEC24F1FF6FAEE0031A233 /* Board.swift */,
 				30AEC2511FF7345D0031A233 /* Player.swift */,
+				30AEC2531FF887910031A233 /* GameType.swift */,
 			);
 			path = "Unbeatable-TicTacToe";
 			sourceTree = "<group>";
@@ -127,6 +130,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30AEC2501FF6FAEE0031A233 /* Board.swift in Sources */,
+				30AEC2541FF887910031A233 /* GameType.swift in Sources */,
 				30AEC2521FF7345D0031A233 /* Player.swift in Sources */,
 				30AEC2491FF6F4BE0031A233 /* main.swift in Sources */,
 			);
