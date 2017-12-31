@@ -8,9 +8,9 @@
 
 import Foundation
 
+let console = ConsoleIO()
 var board = Board()
-var gameType = GameType.humanVersusHuman
-
+var gameType = GameType.getGameType()
 var player1 = Player()
 var player2 = Player()
 
