@@ -15,7 +15,7 @@ struct Board {
     
     enum BoardState {
         case ongoing
-        case hasWon
+        case winner
         case draw
     }
     
@@ -49,5 +49,15 @@ struct Board {
         } else {
             return false
         }
+    }
+    
+    func availableSpots() -> [String] {
+        return board.spots.filter {$0 != "X" && $0 != "O"}
+    }
+    
+    func copy() -> Board {
+        var result = Board()
+        result.spots = self.spots
+        return result
     }
 }
