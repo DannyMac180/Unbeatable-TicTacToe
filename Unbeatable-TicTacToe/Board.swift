@@ -11,7 +11,7 @@ import Foundation
 struct Board {
     var movesMade = 0
     var boardState = BoardState.ongoing
-    var spots = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    var spots = ["O", "O", "O", "4", "5", "6", "7", "8", "9"]
     
     enum BoardState {
         case ongoing
@@ -27,15 +27,15 @@ struct Board {
     }
     
     // Check all possible winning permutations, if one is found return true, else return false
-    func isWinningState(board: Board, player: Player) -> Bool {
-        if (board.spots[0] == player.symbol && board.spots[1] == player.symbol && board.spots[2] == player.symbol) ||
-           (board.spots[3] == player.symbol && board.spots[4] == player.symbol && board.spots[5] == player.symbol) ||
-           (board.spots[6] == player.symbol && board.spots[7] == player.symbol && board.spots[8] == player.symbol) ||
-           (board.spots[0] == player.symbol && board.spots[3] == player.symbol && board.spots[6] == player.symbol) ||
-           (board.spots[1] == player.symbol && board.spots[4] == player.symbol && board.spots[7] == player.symbol) ||
-           (board.spots[2] == player.symbol && board.spots[5] == player.symbol && board.spots[8] == player.symbol) ||
-           (board.spots[0] == player.symbol && board.spots[4] == player.symbol && board.spots[8] == player.symbol) ||
-           (board.spots[2] == player.symbol && board.spots[4] == player.symbol && board.spots[6] == player.symbol)
+    func isWinningState(board: Board, player: Player.PlayerSymbol) -> Bool {
+        if (board.spots[0] == player.rawValue && board.spots[1] == player.rawValue && board.spots[2] == player.rawValue) ||
+           (board.spots[3] == player.rawValue && board.spots[4] == player.rawValue && board.spots[5] == player.rawValue) ||
+           (board.spots[6] == player.rawValue && board.spots[7] == player.rawValue && board.spots[8] == player.rawValue) ||
+           (board.spots[0] == player.rawValue && board.spots[3] == player.rawValue && board.spots[6] == player.rawValue) ||
+           (board.spots[1] == player.rawValue && board.spots[4] == player.rawValue && board.spots[7] == player.rawValue) ||
+           (board.spots[2] == player.rawValue && board.spots[5] == player.rawValue && board.spots[8] == player.rawValue) ||
+           (board.spots[0] == player.rawValue && board.spots[4] == player.rawValue && board.spots[8] == player.rawValue) ||
+           (board.spots[2] == player.rawValue && board.spots[4] == player.rawValue && board.spots[6] == player.rawValue)
         {
             return true
         } else {
@@ -49,10 +49,6 @@ struct Board {
         } else {
             return false
         }
-    }
-    
-    func availableSpots() -> [String] {
-        return board.spots.filter {$0 != "X" && $0 != "O"}
     }
     
     func copy() -> Board {

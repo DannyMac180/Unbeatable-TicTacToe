@@ -14,14 +14,13 @@ var board = Board()
 var gameType = GameType.getGameType()
 var player1 = Player()
 var player2 = Player()
-var playerHasNextMove = player1
 
-player1.symbol = "X"
+player1.symbol = .X
 
-board.outputBoard()
-let nextMove = gameEngine.getHumanMove(player: playerHasNextMove)
-board = gameEngine.makeMove(board, nextMove, player1)
-board.outputBoard()
-let openSpots = board.availableSpots()
-print(openSpots)
+let move = gameEngine.miniMax(board, player2.symbol)
+print(move)
+
+
+
+
 

@@ -10,7 +10,7 @@ import Foundation
 
 class Player {
     var name: String = ""
-    var symbol: String = ""
+    var symbol: PlayerSymbol = .empty
     var hasNextMove: Bool = false
     var isWinner: Bool = false
     var playerType: PlayerType = .computer
@@ -18,6 +18,12 @@ class Player {
     enum PlayerType {
         case human
         case computer
+    }
+    
+    enum PlayerSymbol: String {
+        case X = "X"
+        case O = "O"
+        case empty = ""
     }
     
     func getPlayerName(playerNumber: Int) -> String {
@@ -38,14 +44,14 @@ class Player {
     }
     
     func assignOppositeSymbol() -> String {
-        if player1.symbol == "X" {
+        if player1.symbol.rawValue == "X" {
             return "O"
         } else {
             return "X"
         }
     }
     
-    func assignFirstMove() {
+    func assignFirstMove(toPlayer: Player) {
         print("Please choose the number associated with the player you want to go first:\n1. \(player1.name) 2. \(player2.name)")
         let input = Int(console.getInput())
         
