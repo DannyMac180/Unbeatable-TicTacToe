@@ -11,7 +11,7 @@ import Foundation
 struct Board {
     var movesMade = 0
     var boardState = BoardState.ongoing
-    var spots = ["O", "O", "O", "4", "5", "6", "7", "8", "9"]
+    var spots = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
     
     enum BoardState {
         case ongoing

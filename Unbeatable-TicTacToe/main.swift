@@ -12,12 +12,10 @@ let console = ConsoleIO()
 let gameEngine = GameEngine()
 var board = Board()
 var gameType = GameType.getGameType()
-var player1 = Player()
-var player2 = Player()
 
-player1.symbol = .X
+gameEngine.computerPlayer.symbol = .X
 
-let move = gameEngine.miniMax(board, player2.symbol)
+let move = gameEngine.miniMax(board, gameEngine.computerPlayer.symbol)
 print(move)
 
 

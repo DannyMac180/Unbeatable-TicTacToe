@@ -10,11 +10,31 @@ import Foundation
 
 struct GameEngine {
     var computerPlayer = Player()
+    var humanPlayer = Player()
     
     func getHumanMove(player: Player) -> Int {
         print("\(player.name), you're turn. Please enter the open space number where you want to place your next move:")
         let input = Int(console.getInput())!
         return input
+    }
+    
+    func assignOppositeSymbol() -> String {
+        if computerPlayer.symbol.rawValue == "X" {
+            return "O"
+        } else {
+            return "X"
+        }
+    }
+    
+    func assignFirstMove(toPlayer: Player) {
+        print("Please choose the number associated with the player you want to go first:\n1. \(computerPlayer.name) 2. \(humanPlayer.name)")
+        let input = Int(console.getInput())
+        
+        if input == 1 {
+            computerPlayer.hasNextMove = true
+        } else {
+            humanPlayer.hasNextMove = true
+        }
     }
     
     func makeMove(_ board: Board, _ move: Int, _ player: Player.PlayerSymbol) -> Board {
@@ -35,11 +55,11 @@ struct GameEngine {
         var scores: [Int] = []
         var moves: [Int] = []
         
-        if board.isWinningState(board: board, player: player) {
+        if board.isWinningState(board: board, player: self.computerPlayer.symbol) {
             return 10
         } else if openSpots.isEmpty {
             return 0
-        } else  if board.isWinningState(board: board, player: player) && player != computerPlayer.symbol {
+        } else if board.isWinningState(board: board, player: self.humanPlayer.symbol) {
             return -10
         }
         

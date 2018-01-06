@@ -42,23 +42,4 @@ class Player {
             return "O"
         }
     }
-    
-    func assignOppositeSymbol() -> String {
-        if player1.symbol.rawValue == "X" {
-            return "O"
-        } else {
-            return "X"
-        }
-    }
-    
-    func assignFirstMove(toPlayer: Player) {
-        print("Please choose the number associated with the player you want to go first:\n1. \(player1.name) 2. \(player2.name)")
-        let input = Int(console.getInput())
-        
-        if input == 1 {
-            player1.hasNextMove = true
-        } else {
-            player2.hasNextMove = true
-        }
-    }
 }
