@@ -11,7 +11,7 @@ import Foundation
 struct Board {
     var movesMade = 0
     var boardState = BoardState.ongoing
-    var spots = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    var spots = ["1", "O", "O", "X", "5", "X", "O", "8", "X"]
     
     enum BoardState {
         case ongoing
@@ -48,11 +48,5 @@ struct Board {
         } else {
             return false
         }
-    }
-    
-    func copy() -> Board {
-        var result = Board()
-        result.spots = self.spots
-        return result
     }
 }

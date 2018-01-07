@@ -37,43 +37,54 @@ struct GameEngine {
     
     func makeMove(_ board: Board, _ move: Int, _ playerSymbol: String) -> Board {
         var newBoard = board
-        newBoard.spots[move - 1] = playerSymbol // move - 1 so it writes to the proper index of the move chosen
+        newBoard.spots[move] = playerSymbol // move - 1 so it writes to the proper index of the move chosen
         return newBoard
     }
     
-    func availableSpots(_ board: Board) -> [String] {
-        return board.spots.filter {$0 != "X" && $0 != "O"}
+    func availableMoves(_ board: Board) -> [Int] {
+        var result: [Int] = []
+        
+        for (i, value) in board.spots.enumerated() {
+            if value != "X" && value != "O" {
+                result.append(i)
+            }
+        }
+        
+        return result
     }
     
     func miniMax(_ board: Board, _ playerIsComputer: Bool, _ playerSymbol: String) -> Int {
-        let openSpots = availableSpots(board)
+        let openMoves = availableMoves(board)
 
         var scores: [Int] = []
         var moves: [Int] = []
         
         if board.isWinningState(board: board, playerSymbol: playerSymbol) {
             return 10
-        } else if openSpots.isEmpty {
+        } else if openMoves.isEmpty {
             return 0
         } else if board.isWinningState(board: board, playerSymbol: assignOppositeSymbol(playerSymbol)) {
             return -10
         }
         
-        for move in 0..<openSpots.count {
-            var nextBoard = board.copy()
+        for move in openMoves {
+            var nextBoard = board
             
-            nextBoard = makeMove(nextBoard, move + 1, playerSymbol)
+            nextBoard = makeMove(nextBoard, move, playerSymbol)
             
             scores.append(miniMax(nextBoard, playerIsComputer == true ? false : true, playerSymbol == "X" ? "O" : "X"))
             moves.append(move)
         }
         
+        print(scores)
+        print(moves)
+        
         if playerIsComputer {
-            let bestMove = moves[scores.max()!]
-            return bestMove + 1
+            let max = scores.max()!
+            return scores.index(of: max)!
         } else {
-            let bestMove = moves[scores.min()!]
-            return bestMove + 1
+            let min = scores.min()!
+            return scores.index(of: min)!
         }
     }
 }

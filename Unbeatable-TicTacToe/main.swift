@@ -15,11 +15,11 @@ var gameType = GameType.getGameType()
 var humanPlayer = Player()
 var computerPlayer = Player()
 
-
 computerPlayer.symbol = "X"
+computerPlayer.playerIsComputer = true
+board.outputBoard()
 let move = gameEngine.miniMax(board, computerPlayer.playerIsComputer, computerPlayer.symbol)
-
-
+print(move)
 
 
 
