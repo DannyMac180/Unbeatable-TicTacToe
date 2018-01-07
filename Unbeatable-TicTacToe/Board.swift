@@ -25,26 +25,25 @@ struct Board {
         print(spots[3...5])
         print(spots[0...2])
     }
-    
-    // Check all possible winning permutations, if one is found return true, else return false
-    func isWinningState(board: Board, player: Player.PlayerSymbol) -> Bool {
-        if (board.spots[0] == player.rawValue && board.spots[1] == player.rawValue && board.spots[2] == player.rawValue) ||
-           (board.spots[3] == player.rawValue && board.spots[4] == player.rawValue && board.spots[5] == player.rawValue) ||
-           (board.spots[6] == player.rawValue && board.spots[7] == player.rawValue && board.spots[8] == player.rawValue) ||
-           (board.spots[0] == player.rawValue && board.spots[3] == player.rawValue && board.spots[6] == player.rawValue) ||
-           (board.spots[1] == player.rawValue && board.spots[4] == player.rawValue && board.spots[7] == player.rawValue) ||
-           (board.spots[2] == player.rawValue && board.spots[5] == player.rawValue && board.spots[8] == player.rawValue) ||
-           (board.spots[0] == player.rawValue && board.spots[4] == player.rawValue && board.spots[8] == player.rawValue) ||
-           (board.spots[2] == player.rawValue && board.spots[4] == player.rawValue && board.spots[6] == player.rawValue)
-        {
+
+    func isValidMove(_ move: Int) -> Bool {
+        if board.spots[move - 1] != "X" || board.spots[move - 1] != "O" {
             return true
         } else {
             return false
         }
     }
     
-    func isValidMove(_ move: Int) -> Bool {
-        if board.spots[move - 1] != "X" || board.spots[move - 1] != "O" {
+    func isWinningState(board: Board, playerSymbol: String) -> Bool {
+        if  (board.spots[0] == playerSymbol && board.spots[1] == playerSymbol && board.spots[2] == playerSymbol) ||
+            (board.spots[3] == playerSymbol && board.spots[4] == playerSymbol && board.spots[5] == playerSymbol) ||
+            (board.spots[6] == playerSymbol && board.spots[7] == playerSymbol && board.spots[8] == playerSymbol) ||
+            (board.spots[0] == playerSymbol && board.spots[3] == playerSymbol && board.spots[6] == playerSymbol) ||
+            (board.spots[1] == playerSymbol && board.spots[4] == playerSymbol && board.spots[7] == playerSymbol) ||
+            (board.spots[2] == playerSymbol && board.spots[5] == playerSymbol && board.spots[8] == playerSymbol) ||
+            (board.spots[0] == playerSymbol && board.spots[4] == playerSymbol && board.spots[8] == playerSymbol) ||
+            (board.spots[2] == playerSymbol && board.spots[4] == playerSymbol && board.spots[6] == playerSymbol)
+        {
             return true
         } else {
             return false

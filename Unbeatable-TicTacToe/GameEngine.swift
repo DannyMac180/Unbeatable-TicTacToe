@@ -9,8 +9,6 @@
 import Foundation
 
 struct GameEngine {
-    var computerPlayer = Player()
-    var humanPlayer = Player()
     
     func getHumanMove(player: Player) -> Int {
         print("\(player.name), you're turn. Please enter the open space number where you want to place your next move:")
@@ -18,8 +16,8 @@ struct GameEngine {
         return input
     }
     
-    func assignOppositeSymbol() -> String {
-        if computerPlayer.symbol.rawValue == "X" {
+    func assignOppositeSymbol(_ playerSymbol: String) -> String {
+        if playerSymbol == "X" {
             return "O"
         } else {
             return "X"
@@ -37,9 +35,9 @@ struct GameEngine {
         }
     }
     
-    func makeMove(_ board: Board, _ move: Int, _ player: Player.PlayerSymbol) -> Board {
+    func makeMove(_ board: Board, _ move: Int, _ playerSymbol: String) -> Board {
         var newBoard = board
-        newBoard.spots[move - 1] = player.rawValue // move - 1 so it writes to the proper index of the move chosen
+        newBoard.spots[move - 1] = playerSymbol // move - 1 so it writes to the proper index of the move chosen
         return newBoard
     }
     
@@ -47,32 +45,30 @@ struct GameEngine {
         return board.spots.filter {$0 != "X" && $0 != "O"}
     }
     
-    
-    
-    func miniMax(_ board: Board, _ player: Player.PlayerSymbol) -> Int {
+    func miniMax(_ board: Board, _ playerIsComputer: Bool, _ playerSymbol: String) -> Int {
         let openSpots = availableSpots(board)
-        
+
         var scores: [Int] = []
         var moves: [Int] = []
         
-        if board.isWinningState(board: board, player: self.computerPlayer.symbol) {
+        if board.isWinningState(board: board, playerSymbol: playerSymbol) {
             return 10
         } else if openSpots.isEmpty {
             return 0
-        } else if board.isWinningState(board: board, player: self.humanPlayer.symbol) {
+        } else if board.isWinningState(board: board, playerSymbol: assignOppositeSymbol(playerSymbol)) {
             return -10
         }
         
         for move in 0..<openSpots.count {
             var nextBoard = board.copy()
             
-            nextBoard = makeMove(nextBoard, move + 1, player)
+            nextBoard = makeMove(nextBoard, move + 1, playerSymbol)
             
-            scores.append(miniMax(nextBoard, (player == .O ? .X : .O)))
+            scores.append(miniMax(nextBoard, playerIsComputer == true ? false : true, playerSymbol == "X" ? "O" : "X"))
             moves.append(move)
         }
         
-        if self.computerPlayer.symbol == player {
+        if playerIsComputer {
             let bestMove = moves[scores.max()!]
             return bestMove + 1
         } else {

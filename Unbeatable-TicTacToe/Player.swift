@@ -10,21 +10,10 @@ import Foundation
 
 class Player {
     var name: String = ""
-    var symbol: PlayerSymbol = .empty
+    var symbol: String = ""
     var hasNextMove: Bool = false
     var isWinner: Bool = false
-    var playerType: PlayerType = .computer
-    
-    enum PlayerType {
-        case human
-        case computer
-    }
-    
-    enum PlayerSymbol: String {
-        case X = "X"
-        case O = "O"
-        case empty = ""
-    }
+    var playerIsComputer: Bool = true
     
     func getPlayerName(playerNumber: Int) -> String {
         print("What is Player \(playerNumber)'s name?")

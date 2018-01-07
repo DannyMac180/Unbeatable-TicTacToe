@@ -12,11 +12,12 @@ let console = ConsoleIO()
 let gameEngine = GameEngine()
 var board = Board()
 var gameType = GameType.getGameType()
+var humanPlayer = Player()
+var computerPlayer = Player()
 
-gameEngine.computerPlayer.symbol = .X
 
-let move = gameEngine.miniMax(board, gameEngine.computerPlayer.symbol)
-print(move)
+computerPlayer.symbol = "X"
+let move = gameEngine.miniMax(board, computerPlayer.playerIsComputer, computerPlayer.symbol)
 
 
 
