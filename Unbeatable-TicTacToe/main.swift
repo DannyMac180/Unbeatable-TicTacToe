@@ -9,6 +9,10 @@
 import Foundation
 
 let console = ConsoleIO()
+let player = Player(.X, "Dan")
+let board = Board(player)
+
+print(board.spots)
 
 
 

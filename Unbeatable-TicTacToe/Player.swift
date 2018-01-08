@@ -10,10 +10,10 @@ import GameplayKit
 
 class Player: NSObject {
     
-    enum Symbol: Int {
-        case empty
-        case X
-        case O
+    enum Symbol: String {
+        case empty = "#"
+        case X = "X"
+        case O = "O"
     }
     
     var symbol: Symbol

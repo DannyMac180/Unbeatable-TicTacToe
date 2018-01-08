@@ -16,7 +16,7 @@ class Board: NSObject {
         self.currentPlayer = currentPlayer
     }
     
-    fileprivate var spots: [[Player.Symbol]] = [
+    var spots: [[Player.Symbol]] = [
         [.empty, .empty, .empty],
         [.empty, .empty, .empty],
         [.empty, .empty, .empty]
