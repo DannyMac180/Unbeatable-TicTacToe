@@ -6,44 +6,96 @@
 //  Copyright © 2017 Daniel McAteer. All rights reserved.
 //
 
-import Foundation
+import GameplayKit
 
-struct Board {
-    var movesMade = 0
-    var boardState = BoardState.ongoing
-    var spots = ["1", "O", "O", "X", "5", "X", "O", "8", "X"]
+class Board: NSObject {
     
-    enum BoardState {
-        case ongoing
-        case winner
-        case draw
+    var currentPlayer: Player
+    
+    init(_ currentPlayer: Player) {
+        self.currentPlayer = currentPlayer
     }
     
-    func outputBoard() {
-        print("TicTacToe")
-        print(spots[6...8])
-        print(spots[3...5])
-        print(spots[0...2])
-    }
-
-    func isValidMove(_ move: Int) -> Bool {
-        if board.spots[move - 1] != "X" || board.spots[move - 1] != "O" {
-            return true
-        } else {
-            return false
+    fileprivate var spots: [[Player.Symbol]] = [
+        [.empty, .empty, .empty],
+        [.empty, .empty, .empty],
+        [.empty, .empty, .empty]
+    ]
+    
+    subscript(x: Int, y: Int) -> Player.Symbol {
+        get {
+            return spots[y][x]
+        }
+        set {
+            if spots[y][x] == .empty {
+                spots[y][x] = newValue
+            }
         }
     }
     
-    func isWinningState(board: Board, playerSymbol: String) -> Bool {
-        if  (board.spots[0] == playerSymbol && board.spots[1] == playerSymbol && board.spots[2] == playerSymbol) ||
-            (board.spots[3] == playerSymbol && board.spots[4] == playerSymbol && board.spots[5] == playerSymbol) ||
-            (board.spots[6] == playerSymbol && board.spots[7] == playerSymbol && board.spots[8] == playerSymbol) ||
-            (board.spots[0] == playerSymbol && board.spots[3] == playerSymbol && board.spots[6] == playerSymbol) ||
-            (board.spots[1] == playerSymbol && board.spots[4] == playerSymbol && board.spots[7] == playerSymbol) ||
-            (board.spots[2] == playerSymbol && board.spots[5] == playerSymbol && board.spots[8] == playerSymbol) ||
-            (board.spots[0] == playerSymbol && board.spots[4] == playerSymbol && board.spots[8] == playerSymbol) ||
-            (board.spots[2] == playerSymbol && board.spots[4] == playerSymbol && board.spots[6] == playerSymbol)
-        {
+    var isFull: Bool {
+        for row in spots {
+            for tile in row {
+                if tile == .empty {
+                    return false
+                }
+            }
+        }
+        return true
+    }
+    
+    var winningPlayer: Player? {
+        for column in 0..<spots.count {
+            if spots[column][0] == spots[column][1] && spots[column][0] == spots[column][2] && spots[column][0] != .empty {
+                if let index = Player.allPlayers.index(where: { player -> Bool in
+                    return player.symbol == spots[column][0]
+                }) {
+                    return Player.allPlayers[index]
+                } else {
+                    return nil
+                }
+            } else if spots[0][column] == spots[1][column] && spots[0][column] == spots[2][column] && spots[0][column] != .empty {
+                if let index = Player.allPlayers.index(where: { player -> Bool in
+                    return player.symbol == spots[0][column]
+                }){
+                    return Player.allPlayers[index]
+                } else {
+                    return nil
+                }
+            }
+        }
+        
+        if spots[0][0] == spots[1][1] && spots[0][0] == spots[2][2] && spots[0][0] != .empty {
+            if let index = Player.allPlayers.index(where: { player -> Bool in
+                return player.symbol == spots[0][0]
+            }){
+                return Player.allPlayers[index]
+            } else {
+                return nil
+            }
+        } else if spots[2][0] == spots[1][1] && spots[2][0] == spots[0][2] && spots[0][2] != .empty {
+            if let index = Player.allPlayers.index(where: { player -> Bool in
+                return player.symbol == spots[2][0]
+            }){
+                return Player.allPlayers[index]
+            } else {
+                return nil
+            }
+        } else {
+            return nil
+        }
+    }
+    
+    func clear() {
+        for x in 0..<spots.count {
+            for y in 0..<spots[x].count {
+                self[x, y] = .empty
+            }
+        }
+    }
+    
+    func canMove(at position: CGPoint) -> Bool {
+        if self[Int(position.x), Int(position.y)] == .empty {
             return true
         } else {
             return false

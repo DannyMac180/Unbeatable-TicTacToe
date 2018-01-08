@@ -6,29 +6,34 @@
 //  Copyright © 2017 Daniel McAteer. All rights reserved.
 //
 
-import Foundation
+import GameplayKit
 
-class Player {
-    var name: String = ""
-    var symbol: String = ""
-    var hasNextMove: Bool = false
-    var isWinner: Bool = false
-    var playerIsComputer: Bool = true
+class Player: NSObject {
     
-    func getPlayerName(playerNumber: Int) -> String {
-        print("What is Player \(playerNumber)'s name?")
-        let input = console.getInput()
-        return input
+    enum Symbol: Int {
+        case empty
+        case X
+        case O
     }
     
-    func getPlayerSymbol(_ player: Player) -> String {
-        print("Please choose the number associated with the symbol you would like \(player.name) to have:\n1. X 2. 0")
-        let input = Int(console.getInput())
-        
-        if input == 1 {
-            return "X"
+    var symbol: Symbol
+    var name: String
+    
+    static var allPlayers = [
+        Player(.X, "PlayerOne"),
+        Player(.O, "PlayerTwo")
+    ]
+    
+    var opponent: Player {
+        if symbol == .O {
+            return Player.allPlayers[0]
         } else {
-            return "O"
+            return Player.allPlayers[1]
         }
+    }
+    
+    init(_ symbol: Symbol, _ name: String) {
+        self.symbol = symbol
+        self.name = name
     }
 }
