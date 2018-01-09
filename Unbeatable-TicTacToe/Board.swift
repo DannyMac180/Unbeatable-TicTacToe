@@ -10,11 +10,7 @@ import GameplayKit
 
 class Board: NSObject {
     
-    var currentPlayer: Player
-    
-    init(_ currentPlayer: Player) {
-        self.currentPlayer = currentPlayer
-    }
+    var currentPlayer = Player.allPlayers[0]
     
     var spots: [[Player.Symbol]] = [
         [.empty, .empty, .empty],
@@ -99,6 +95,86 @@ class Board: NSObject {
             return true
         } else {
             return false
+        }
+    }
+}
+
+extension Board: GKGameModel {
+    
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = Board()
+        copy.setGameModel(self)
+        return copy
+    }
+    
+    var players: [GKGameModelPlayer]? {
+        return Player.allPlayers
+    }
+    
+    var activePlayer: GKGameModelPlayer? {
+        return currentPlayer
+    }
+    
+    func setGameModel(_ gameModel: GKGameModel) {
+        if let board = gameModel as? Board {
+            spots = board.spots
+        }
+    }
+    
+    func isWin(for player: GKGameModelPlayer) -> Bool {
+        guard let player = player as? Player else {
+            return false
+        }
+        
+        if let winner = winningPlayer {
+            return player == winner
+        } else {
+            return false
+        }
+    }
+    
+    func gameModelUpdates(for player: GKGameModelPlayer) -> [GKGameModelUpdate]? {
+
+        guard let player = player as? Player else {
+            return nil
+        }
+        
+        if isWin(for: player) {
+            return nil
+        }
+        
+        var moves = [Move]()
+        
+        for x in 0..<spots.count {
+            for y in 0..<spots[x].count {
+                let position = CGPoint(x: x, y: y)
+                if canMove(at: position) {
+                    moves.append(Move(position))
+                }
+            }
+        }
+        
+        return moves
+    }
+    
+    func apply(_ gameModelUpdate: GKGameModelUpdate) {
+        guard  let move = gameModelUpdate as? Move else {
+            return
+        }
+
+        self[Int(move.coordinate.x), Int(move.coordinate.y)] = currentPlayer.symbol
+        currentPlayer = currentPlayer.opponent
+    }
+    
+    func score(for player: GKGameModelPlayer) -> Int {
+        guard let player = player as? Player else {
+            return Move.Score.none.rawValue
+        }
+        
+        if isWin(for: player) {
+            return Move.Score.win.rawValue
+        } else {
+            return Move.Score.none.rawValue
         }
     }
 }

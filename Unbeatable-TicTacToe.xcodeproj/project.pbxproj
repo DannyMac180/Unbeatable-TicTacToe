@@ -13,6 +13,7 @@
 		30AEC2541FF887910031A233 /* GameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AEC2531FF887910031A233 /* GameType.swift */; };
 		30AEC2561FF893E20031A233 /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AEC2551FF893E20031A233 /* GameEngine.swift */; };
 		30AEC2581FF961BE0031A233 /* ConsoleIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AEC2571FF961BE0031A233 /* ConsoleIO.swift */; };
+		30AEC25A20045F010031A233 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AEC25920045F010031A233 /* Move.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +36,7 @@
 		30AEC2531FF887910031A233 /* GameType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameType.swift; sourceTree = "<group>"; };
 		30AEC2551FF893E20031A233 /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
 		30AEC2571FF961BE0031A233 /* ConsoleIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleIO.swift; sourceTree = "<group>"; };
+		30AEC25920045F010031A233 /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				30AEC2481FF6F4BE0031A233 /* main.swift */,
 				30AEC24F1FF6FAEE0031A233 /* Board.swift */,
 				30AEC2511FF7345D0031A233 /* Player.swift */,
+				30AEC25920045F010031A233 /* Move.swift */,
 				30AEC2531FF887910031A233 /* GameType.swift */,
 				30AEC2551FF893E20031A233 /* GameEngine.swift */,
 				30AEC2571FF961BE0031A233 /* ConsoleIO.swift */,
@@ -135,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30AEC25A20045F010031A233 /* Move.swift in Sources */,
 				30AEC2561FF893E20031A233 /* GameEngine.swift in Sources */,
 				30AEC2501FF6FAEE0031A233 /* Board.swift in Sources */,
 				30AEC2541FF887910031A233 /* GameType.swift in Sources */,

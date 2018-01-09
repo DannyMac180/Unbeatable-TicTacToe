@@ -8,20 +8,21 @@
 
 import GameplayKit
 
-class Player: NSObject {
+class Player: NSObject, GKGameModelPlayer {
     
-    enum Symbol: String {
-        case empty = "#"
-        case X = "X"
-        case O = "O"
+    enum Symbol: Int {
+        case empty
+        case X
+        case O
     }
     
     var symbol: Symbol
     var name: String
+    var playerId: Int
     
     static var allPlayers = [
-        Player(.X, "PlayerOne"),
-        Player(.O, "PlayerTwo")
+        Player(.X, "PlayerOne", 1),
+        Player(.O, "PlayerTwo", 2)
     ]
     
     var opponent: Player {
@@ -32,8 +33,9 @@ class Player: NSObject {
         }
     }
     
-    init(_ symbol: Symbol, _ name: String) {
+    init(_ symbol: Symbol, _ name: String, _ playerId: Int) {
         self.symbol = symbol
         self.name = name
+        self.playerId = symbol.rawValue
     }
 }
