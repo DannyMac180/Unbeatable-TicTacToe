@@ -6,7 +6,6 @@
 //  Copyright © 2018 Daniel McAteer. All rights reserved.
 //
 
-import Foundation
 import GameplayKit
 
 class Move: NSObject, GKGameModelUpdate {

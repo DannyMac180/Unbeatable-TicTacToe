@@ -73,8 +73,8 @@
 				30AEC24F1FF6FAEE0031A233 /* Board.swift */,
 				30AEC2511FF7345D0031A233 /* Player.swift */,
 				30AEC25920045F010031A233 /* Move.swift */,
-				30AEC2531FF887910031A233 /* GameType.swift */,
 				30AEC2551FF893E20031A233 /* GameEngine.swift */,
+				30AEC2531FF887910031A233 /* GameType.swift */,
 				30AEC2571FF961BE0031A233 /* ConsoleIO.swift */,
 			);
 			path = "Unbeatable-TicTacToe";
