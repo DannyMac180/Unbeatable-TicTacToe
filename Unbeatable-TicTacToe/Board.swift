@@ -11,19 +11,20 @@ import GameplayKit
 class Board: NSObject {
     
     var currentPlayer = Player.allPlayers[0]
+    let emptySpots = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
     
-    var spots: [[Player.Symbol]] = [
-        [.empty, .empty, .empty],
-        [.empty, .empty, .empty],
-        [.empty, .empty, .empty]
+    var spots: [[String]] = [
+        ["7", "8", "9"],
+        ["4", "5", "6"],
+        ["1", "2", "3"]
     ]
     
-    subscript(x: Int, y: Int) -> Player.Symbol {
+    subscript(x: Int, y: Int) -> String {
         get {
             return spots[y][x]
         }
         set {
-            if spots[y][x] == .empty {
+            if spots[y][x] != "X" || spots[y][x] != "O"  {
                 spots[y][x] = newValue
             }
         }
@@ -32,7 +33,7 @@ class Board: NSObject {
     var isFull: Bool {
         for row in spots {
             for tile in row {
-                if tile == .empty {
+                if emptySpots.contains(tile) {
                     return false
                 }
             }
@@ -42,17 +43,17 @@ class Board: NSObject {
     
     var winningPlayer: Player? {
         for column in 0..<spots.count {
-            if spots[column][0] == spots[column][1] && spots[column][0] == spots[column][2] && spots[column][0] != .empty {
+            if spots[column][0] == spots[column][1] && spots[column][0] == spots[column][2] {
                 if let index = Player.allPlayers.index(where: { player -> Bool in
-                    return player.symbol == spots[column][0]
+                    return player.symbol.rawValue == spots[column][0]
                 }) {
                     return Player.allPlayers[index]
                 } else {
                     return nil
                 }
-            } else if spots[0][column] == spots[1][column] && spots[0][column] == spots[2][column] && spots[0][column] != .empty {
+            } else if spots[0][column] == spots[1][column] && spots[0][column] == spots[2][column] {
                 if let index = Player.allPlayers.index(where: { player -> Bool in
-                    return player.symbol == spots[0][column]
+                    return player.symbol.rawValue == spots[0][column]
                 }){
                     return Player.allPlayers[index]
                 } else {
@@ -61,17 +62,17 @@ class Board: NSObject {
             }
         }
         
-        if spots[0][0] == spots[1][1] && spots[0][0] == spots[2][2] && spots[0][0] != .empty {
+        if spots[0][0] == spots[1][1] && spots[0][0] == spots[2][2] {
             if let index = Player.allPlayers.index(where: { player -> Bool in
-                return player.symbol == spots[0][0]
+                return player.symbol.rawValue == spots[0][0]
             }){
                 return Player.allPlayers[index]
             } else {
                 return nil
             }
-        } else if spots[2][0] == spots[1][1] && spots[2][0] == spots[0][2] && spots[0][2] != .empty {
+        } else if spots[2][0] == spots[1][1] && spots[2][0] == spots[0][2] {
             if let index = Player.allPlayers.index(where: { player -> Bool in
-                return player.symbol == spots[2][0]
+                return player.symbol.rawValue == spots[2][0]
             }){
                 return Player.allPlayers[index]
             } else {
@@ -82,16 +83,14 @@ class Board: NSObject {
         }
     }
     
-    func clear() {
+    func display() {
         for x in 0..<spots.count {
-            for y in 0..<spots[x].count {
-                self[x, y] = .empty
-            }
+            print(spots[x][0], spots[x][1], spots[x][2])
         }
     }
     
     func canMove(at position: CGPoint) -> Bool {
-        if self[Int(position.x), Int(position.y)] == .empty {
+        if emptySpots.contains(spots[Int(position.x)][Int(position.y)]) {
             return true
         } else {
             return false
@@ -162,7 +161,7 @@ extension Board: GKGameModel {
             return
         }
 
-        self[Int(move.coordinate.x), Int(move.coordinate.y)] = currentPlayer.symbol
+        self[Int(move.coordinate.x), Int(move.coordinate.y)] = currentPlayer.symbol.rawValue
         currentPlayer = currentPlayer.opponent
     }
     

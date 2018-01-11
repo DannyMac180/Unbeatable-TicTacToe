@@ -10,10 +10,9 @@ import GameplayKit
 
 class Player: NSObject, GKGameModelPlayer {
     
-    enum Symbol: Int {
-        case empty
-        case X
-        case O
+    enum Symbol: String {
+        case X = "X"
+        case O = "O"
     }
     
     var symbol: Symbol
@@ -36,6 +35,6 @@ class Player: NSObject, GKGameModelPlayer {
     init(_ symbol: Symbol, _ name: String, _ playerId: Int) {
         self.symbol = symbol
         self.name = name
-        self.playerId = symbol.rawValue
+        self.playerId = playerId
     }
 }
