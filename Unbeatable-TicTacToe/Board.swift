@@ -10,13 +10,13 @@ import GameplayKit
 
 class Board: NSObject {
     
-    var currentPlayer = Player.allPlayers[0]
+    var currentPlayer = Player.allPlayers[arc4random() % 2 == 0 ? 0 : 1]
     let emptySpots = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
     
     var spots: [[String]] = [
-        ["7", "8", "9"],
-        ["4", "5", "6"],
-        ["1", "2", "3"]
+        ["O", "8", "X"],
+        ["X", "5", "X"],
+        ["O", "O", "O"]
     ]
     
     subscript(x: Int, y: Int) -> String {

@@ -9,10 +9,11 @@
 import Foundation
 
 let console = ConsoleIO()
-let player = Player.allPlayers[0]
 let board = Board()
+let computerAi = GameEngine(board: board)
 
-board.display()
+
+
 
 
 
