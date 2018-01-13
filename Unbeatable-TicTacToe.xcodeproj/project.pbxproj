@@ -14,7 +14,6 @@
 		30AEC2561FF893E20031A233 /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AEC2551FF893E20031A233 /* GameEngine.swift */; };
 		30AEC2581FF961BE0031A233 /* ConsoleIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AEC2571FF961BE0031A233 /* ConsoleIO.swift */; };
 		30AEC25A20045F010031A233 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AEC25920045F010031A233 /* Move.swift */; };
-		30AEC26220085ECC0031A233 /* Unbeatable_TicTacToe_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AEC26120085ECC0031A233 /* Unbeatable_TicTacToe_Tests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,8 +38,7 @@
 		30AEC2571FF961BE0031A233 /* ConsoleIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleIO.swift; sourceTree = "<group>"; };
 		30AEC25920045F010031A233 /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
 		30AEC25F20085ECC0031A233 /* Unbeatable-TicTacToe-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unbeatable-TicTacToe-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		30AEC26120085ECC0031A233 /* Unbeatable_TicTacToe_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unbeatable_TicTacToe_Tests.swift; sourceTree = "<group>"; };
-		30AEC26320085ECC0031A233 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30AEC26B200865F80031A233 /* UnbeatableTicTacToeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnbeatableTicTacToeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +56,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		30AEC268200865F80031A233 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -65,7 +70,6 @@
 			isa = PBXGroup;
 			children = (
 				30AEC2471FF6F4BE0031A233 /* Unbeatable-TicTacToe */,
-				30AEC26020085ECC0031A233 /* Unbeatable-TicTacToe-Tests */,
 				30AEC2461FF6F4BE0031A233 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -75,6 +79,7 @@
 			children = (
 				30AEC2451FF6F4BE0031A233 /* Unbeatable-TicTacToe */,
 				30AEC25F20085ECC0031A233 /* Unbeatable-TicTacToe-Tests.xctest */,
+				30AEC26B200865F80031A233 /* UnbeatableTicTacToeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -91,15 +96,6 @@
 				30AEC2571FF961BE0031A233 /* ConsoleIO.swift */,
 			);
 			path = "Unbeatable-TicTacToe";
-			sourceTree = "<group>";
-		};
-		30AEC26020085ECC0031A233 /* Unbeatable-TicTacToe-Tests */ = {
-			isa = PBXGroup;
-			children = (
-				30AEC26120085ECC0031A233 /* Unbeatable_TicTacToe_Tests.swift */,
-				30AEC26320085ECC0031A233 /* Info.plist */,
-			);
-			path = "Unbeatable-TicTacToe-Tests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +135,23 @@
 			productReference = 30AEC25F20085ECC0031A233 /* Unbeatable-TicTacToe-Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		30AEC26A200865F80031A233 /* UnbeatableTicTacToeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 30AEC270200865F80031A233 /* Build configuration list for PBXNativeTarget "UnbeatableTicTacToeTests" */;
+			buildPhases = (
+				30AEC267200865F80031A233 /* Sources */,
+				30AEC268200865F80031A233 /* Frameworks */,
+				30AEC269200865F80031A233 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UnbeatableTicTacToeTests;
+			productName = UnbeatableTicTacToeTests;
+			productReference = 30AEC26B200865F80031A233 /* UnbeatableTicTacToeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -154,6 +167,10 @@
 						ProvisioningStyle = Automatic;
 					};
 					30AEC25E20085ECC0031A233 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					30AEC26A200865F80031A233 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 					};
@@ -173,12 +190,20 @@
 			targets = (
 				30AEC2441FF6F4BE0031A233 /* Unbeatable-TicTacToe */,
 				30AEC25E20085ECC0031A233 /* Unbeatable-TicTacToe-Tests */,
+				30AEC26A200865F80031A233 /* UnbeatableTicTacToeTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		30AEC25D20085ECC0031A233 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30AEC269200865F80031A233 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -206,7 +231,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30AEC26220085ECC0031A233 /* Unbeatable_TicTacToe_Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30AEC267200865F80031A233 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,6 +398,34 @@
 			};
 			name = Release;
 		};
+		30AEC271200865F80031A233 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 7H8FME2M4D;
+				INFOPLIST_FILE = UnbeatableTicTacToeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.theartofsmart.UnbeatableTicTacToeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		30AEC272200865F80031A233 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 7H8FME2M4D;
+				INFOPLIST_FILE = UnbeatableTicTacToeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.theartofsmart.UnbeatableTicTacToeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -393,6 +452,15 @@
 			buildConfigurations = (
 				30AEC26520085ECC0031A233 /* Debug */,
 				30AEC26620085ECC0031A233 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		30AEC270200865F80031A233 /* Build configuration list for PBXNativeTarget "UnbeatableTicTacToeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30AEC271200865F80031A233 /* Debug */,
+				30AEC272200865F80031A233 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

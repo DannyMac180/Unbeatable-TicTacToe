@@ -4,15 +4,28 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Unbeatable-TicTacToe-Tests.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
-		</dict>
 		<key>Unbeatable-TicTacToe.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>30AEC2441FF6F4BE0031A233</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>30AEC25E20085ECC0031A233</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>30AEC26A200865F80031A233</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

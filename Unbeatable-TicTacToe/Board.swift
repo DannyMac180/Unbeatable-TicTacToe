@@ -14,9 +14,9 @@ class Board: NSObject {
     let emptySpots = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
     
     var spots: [[String]] = [
-        ["O", "8", "X"],
-        ["X", "5", "X"],
-        ["O", "O", "O"]
+        ["O", "X", "X"],
+        ["X", "O", "O"],
+        ["O", "O", "X"]
     ]
     
     subscript(x: Int, y: Int) -> String {
